@@ -1,0 +1,15 @@
+version: '2'
+services:
+  consul-master:
+    image: consul
+  networks:
+      consul_net
+        ipv4_address: 172.17.0.2
+  consul-agent_1:
+    image: consul
+    commond: [agent, -dev, -join=172.17.0.2]
+    networks:
+      consul_net
+networks:
+  consul_net:
+    driver: bridge
